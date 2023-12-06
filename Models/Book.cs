@@ -12,8 +12,8 @@ namespace NewtonLibraryBino5.Models
         public string? BookTitle { get; set; }
         public Guid ISBN { get; set; } = new Guid();
         public bool Available { get; set; }
-        public DateTime BorrowingDate { get; set; }
-        public DateTime DueDate { get; set; }
+        public DateTime? BorrowingDate { get; set; }
+        public DateTime? DueDate { get; set; }
         public int PublicationYear { get; set; } = new Random().Next(1900, 2023);
         public int Rating { get; set; } = new Random().Next(1, 5);
 
