@@ -10,7 +10,7 @@ namespace NewtonLibraryBino5.Models
     internal class Customer
     {
         [Key]
-        public int BorrowerID { get; set; }
+        public int CustomerID { get; set; }
 
         public string FirstName { get; set; }
         [MaxLength(70)]

@@ -12,8 +12,8 @@ using NewtonLibraryBino5.Data;
 namespace NewtonLibraryBino5.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20231206194338_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20231209203714_bino")]
+    partial class bino
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,10 +72,10 @@ namespace NewtonLibraryBino5.Migrations
                     b.Property<string>("BookTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("BorrowingDate")
+                    b.Property<DateTime?>("BorrowingDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DueDate")
+                    b.Property<DateTime?>("DueDate")
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("ISBN")
@@ -99,11 +99,11 @@ namespace NewtonLibraryBino5.Migrations
 
             modelBuilder.Entity("NewtonLibraryBino5.Models.Customer", b =>
                 {
-                    b.Property<int>("BorrowerID")
+                    b.Property<int>("CustomerID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BorrowerID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerID"));
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -117,7 +117,7 @@ namespace NewtonLibraryBino5.Migrations
                     b.Property<int?>("LoanCardsLoancardID")
                         .HasColumnType("int");
 
-                    b.HasKey("BorrowerID");
+                    b.HasKey("CustomerID");
 
                     b.HasIndex("LoanCardsLoancardID");
 

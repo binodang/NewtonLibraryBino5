@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace NewtonLibraryBino5.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class bino : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -46,8 +46,8 @@ namespace NewtonLibraryBino5.Migrations
                     BookTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ISBN = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Available = table.Column<bool>(type: "bit", nullable: false),
-                    BorrowingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    BorrowingDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DueDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     PublicationYear = table.Column<int>(type: "int", nullable: false),
                     Rating = table.Column<int>(type: "int", nullable: false),
                     LoancardID = table.Column<int>(type: "int", nullable: true)
@@ -66,7 +66,7 @@ namespace NewtonLibraryBino5.Migrations
                 name: "Customers",
                 columns: table => new
                 {
-                    BorrowerID = table.Column<int>(type: "int", nullable: false)
+                    CustomerID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(70)", maxLength: 70, nullable: false),
@@ -74,7 +74,7 @@ namespace NewtonLibraryBino5.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Customers", x => x.BorrowerID);
+                    table.PrimaryKey("PK_Customers", x => x.CustomerID);
                     table.ForeignKey(
                         name: "FK_Customers_LoanCards_LoanCardsLoancardID",
                         column: x => x.LoanCardsLoancardID,
